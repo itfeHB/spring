@@ -48,20 +48,23 @@
 		<property name="advice" ref="myAop01Around" />
 	</bean>
 	 -->
+	 <!-- 
 	<aop:config>
 
 	  <aop:aspect id="aspectLoggging" ref="myAop02Around" >
 	
-	     <!-- @Before -->
+	     @Before
 	     <aop:pointcut id="pointCut"
 		expression="execution(* com.bit.sts01.model.JavaDao.func02(..))" />
-		<!-- 
+		
 	     <aop:before method="logBefore" pointcut-ref="pointCutBefore" />
 	     <aop:after method="logAfter" pointcut-ref="pointCut" />
-	     --> 
+	     
 	     <aop:around method="logAround" pointcut-ref="pointCut" />
 				
 	  </aop:aspect>
 
 	</aop:config>
+	 -->
+	 <aop:aspectj-autoproxy/>
 </beans>
