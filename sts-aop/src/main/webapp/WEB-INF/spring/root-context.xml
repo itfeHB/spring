@@ -6,6 +6,7 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
 	<bean id="myAop01Before" class="com.bit.sts01.aop.MyAop01Before"></bean>
+	<bean id="myAop01After" class="com.bit.sts01.aop.MyAop01After"></bean>
 	
 	<bean id="javaDao" class="com.bit.sts01.model.JavaDaoImpl"></bean>
 	
@@ -14,6 +15,7 @@
 		<property name="interceptorNames">
 			<list>
 				<value>myAop01Before</value>
+				<value>myAop01After</value>
 			</list>
 		</property>
 	</bean>
