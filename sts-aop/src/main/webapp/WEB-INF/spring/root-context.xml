@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+	<bean id="myAop01Before" class="com.bit.sts01.aop.MyAop01Before"></bean>
+	
+	<bean id="javaDao" class="com.bit.sts01.model.JavaDaoImpl"></bean>
+	
+	<bean id="proxyFactoryBean" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="javaDao"></property>
+		<property name="interceptorNames">
+			<list>
+				<value>myAop01Before</value>
+			</list>
+		</property>
+	</bean>
+	
+</beans>
