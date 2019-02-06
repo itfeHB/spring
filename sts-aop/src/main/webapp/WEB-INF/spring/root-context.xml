@@ -20,14 +20,25 @@
 		</property>
 	</bean>
 	
+	<!-- 
 	<bean id="customerPointcut"
         class="org.springframework.aop.support.NameMatchMethodPointcut">
 		<property name="mappedName" value="func02" />
 	</bean>
-	
 	<bean id="customerAdvisor"
 		class="org.springframework.aop.support.DefaultPointcutAdvisor">
 		<property name="pointcut" ref="customerPointcut" />
+		<property name="advice" ref="myAop01Around" />
+	</bean>
+	 -->
+	<bean id="customerAdvisor"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="patterns">
+			<list>
+				<value>.*func*.*</value>
+			</list>
+		</property>
+
 		<property name="advice" ref="myAop01Around" />
 	</bean>
 </beans>
