@@ -7,6 +7,7 @@
 		
 	<bean id="myAop01Before" class="com.bit.sts01.aop.MyAop01Before"></bean>
 	<bean id="myAop01After" class="com.bit.sts01.aop.MyAop01After"></bean>
+	<bean id="myAop01Around" class="com.bit.sts01.aop.MyAop01Around"></bean>
 	
 	<bean id="javaDao" class="com.bit.sts01.model.JavaDaoImpl"></bean>
 	
@@ -16,6 +17,7 @@
 			<list>
 				<value>myAop01Before</value>
 				<value>myAop01After</value>
+				<value>myAop01Around</value>
 			</list>
 		</property>
 	</bean>
