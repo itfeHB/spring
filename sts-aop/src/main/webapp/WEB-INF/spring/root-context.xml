@@ -7,6 +7,7 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
+	<bean id="myAop02After" class="com.bit.sts01.aop.MyAop02After"></bean>
 	<bean id="myAop02Before" class="com.bit.sts01.aop.MyAop02Before"></bean>
 	<bean id="myAop01Before" class="com.bit.sts01.aop.MyAop01Before"></bean>
 	<bean id="myAop01After" class="com.bit.sts01.aop.MyAop01After"></bean>
@@ -48,13 +49,15 @@
 	 -->
 	<aop:config>
 
-	  <aop:aspect id="aspectLoggging" ref="myAop02Before" >
+	  <aop:aspect id="aspectLoggging" ref="myAop02After" >
 	
 	     <!-- @Before -->
-	     <aop:pointcut id="pointCutBefore"
+	     <aop:pointcut id="pointCut"
 		expression="execution(* com.bit.sts01.model.JavaDao.func02(..))" />
-	
+		<!-- 
 	     <aop:before method="logBefore" pointcut-ref="pointCutBefore" />
+	     --> 
+	     <aop:before method="logAfter" pointcut-ref="pointCut" />
 				
 	  </aop:aspect>
 
