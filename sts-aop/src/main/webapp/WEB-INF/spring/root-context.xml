@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
+	<bean id="myAop02Before" class="com.bit.sts01.aop.MyAop02Before"></bean>
 	<bean id="myAop01Before" class="com.bit.sts01.aop.MyAop01Before"></bean>
 	<bean id="myAop01After" class="com.bit.sts01.aop.MyAop01After"></bean>
 	<bean id="myAop01Around" class="com.bit.sts01.aop.MyAop01Around"></bean>
 	
 	<bean id="javaDao" class="com.bit.sts01.model.JavaDaoImpl"></bean>
-	
+	<!-- 
 	<bean id="proxyFactoryBean" class="org.springframework.aop.framework.ProxyFactoryBean">
 		<property name="target" ref="javaDao"></property>
 		<property name="interceptorNames">
@@ -19,7 +22,7 @@
 			</list>
 		</property>
 	</bean>
-	
+	 -->
 	<!-- 
 	<bean id="customerPointcut"
         class="org.springframework.aop.support.NameMatchMethodPointcut">
@@ -31,6 +34,7 @@
 		<property name="advice" ref="myAop01Around" />
 	</bean>
 	 -->
+	<!--  
 	<bean id="customerAdvisor"
 		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
 		<property name="patterns">
@@ -41,4 +45,18 @@
 
 		<property name="advice" ref="myAop01Around" />
 	</bean>
+	 -->
+	<aop:config>
+
+	  <aop:aspect id="aspectLoggging" ref="myAop02Before" >
+	
+	     <!-- @Before -->
+	     <aop:pointcut id="pointCutBefore"
+		expression="execution(* com.bit.sts01.model.JavaDao.func02(..))" />
+	
+	     <aop:before method="logBefore" pointcut-ref="pointCutBefore" />
+				
+	  </aop:aspect>
+
+	</aop:config>
 </beans>
