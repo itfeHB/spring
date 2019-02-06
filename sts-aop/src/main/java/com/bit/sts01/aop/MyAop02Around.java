@@ -9,7 +9,7 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 public class MyAop02Around {
 
-	 @Around("execution(* com.bit.sts01.model.JavaDao.func03(..))")
+	@Around("execution(* com.bit.sts01.model.JavaDao.func03(..))")
 	public void logAround(ProceedingJoinPoint joinPoint) throws Throwable {
 
 		System.out.println("logAround() is running!");

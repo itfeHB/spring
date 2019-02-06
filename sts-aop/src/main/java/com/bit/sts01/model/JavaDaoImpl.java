@@ -7,8 +7,10 @@ public class JavaDaoImpl implements JavaDao {
 	private static final Logger logger = LoggerFactory.getLogger(JavaDaoImpl.class);
 	
 	@Override
-	public void func01() {
+	public String func01() throws Exception {
 		logger.debug("func01");
+		if(1>0)throw new Exception();
+		return "abc";
 	}
 
 	@Override

@@ -24,7 +24,12 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		proxyFactoryBean.func01();
+		try {
+			String result=proxyFactoryBean.func01();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		proxyFactoryBean.func02();
 		proxyFactoryBean.func03();
 		
